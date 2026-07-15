@@ -50,7 +50,7 @@ Zura-Co/
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/yourusername/zura-co.git
+git clone https://github.com/ashfa120/zura-co.git
 ```
 
 2. Open the project folder.
@@ -110,7 +110,7 @@ This project is licensed under the MIT License.
 
 Front-End Web Developer
 
-GitHub: https://github.com/yourusername
+GitHub: https://github.com/ashfa120
 
 ---
 
