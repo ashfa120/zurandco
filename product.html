@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+
+<div class="product-page">
+
+    <!-- Left Side -->
+    <div class="left-side">
+        <div id="mediaContainer">
+            <img id="productImage" style="display:none;" alt="Product Image">
+
+            <video id="productVideo" controls autoplay muted playsinline style="display:none;">
+                <source id="videoSource" src="" type="video/mp4">
+            </video>
+        </div>
+        <div id="galleryThumbnails" class="gallery-thumbnails" aria-label="Product gallery"></div>
+    </div>
+
+    <!-- Right Side -->
+    <div class="right-side">
+
+        <h1 id="productName"></h1>
+
+        <h2 id="productPrice"></h2>
+
+        <h3>Product Details</h3>
+
+        <ul class="details">
+            <li>✔ Premium Embroidery</li>
+            <li>✔ Soft Luxury Fabric</li>
+            <li>✔ Available Sizes: S, M, L, XL</li>
+            <li>✔ Ready to Ship</li>
+        </ul>
+
+        <h3>Select Size</h3>
+
+        <div class="sizes">
+            <button class="size-btn" data-size="S">S</button>
+            <button class="size-btn" data-size="M">M</button>
+            <button class="size-btn" data-size="L">L</button>
+            <button class="size-btn" data-size="XL">XL</button>
+        </div>
+
+        <p id="productDesc"></p>
+
+        <a id="whatsappBtn" target="_blank">
+            Order on WhatsApp
+        </a>
+
+    </div>
+
+</div>
+
+<script>
+const params = new URLSearchParams(window.location.search);
+
+const name = params.get("name");
+const price = params.get("price");
+const image = params.get("image");
+const video = params.get("video");
+const desc = params.get("desc");
+const phone = params.get("phone");
+const galleryParam = params.get("gallery");
+
+// Product information
+document.getElementById("productName").textContent = name;
+document.getElementById("productPrice").textContent = price;
+document.getElementById("productDesc").textContent = desc;
+
+// Gallery: newer product links can pass multiple image/video paths. Older
+// links remain supported and use their existing media as a one-item gallery.
+const img = document.getElementById("productImage");
+const videoElement = document.getElementById("productVideo");
+const videoSource = document.getElementById("videoSource");
+const thumbnails = document.getElementById("galleryThumbnails");
+
+let gallery = [];
+try {
+    gallery = galleryParam ? JSON.parse(galleryParam) : [];
+} catch {
+    gallery = [];
+}
+
+if (!Array.isArray(gallery) || gallery.length === 0) {
+    gallery = [video || image].filter(Boolean);
+}
+
+function isVideo(media) {
+    return /\.mp4($|\?)/i.test(media);
+}
+
+function showMedia(media) {
+    const videoMedia = isVideo(media);
+    img.style.display = videoMedia ? "none" : "block";
+    videoElement.style.display = videoMedia ? "block" : "none";
+
+    if (videoMedia) {
+        videoSource.src = media;
+        videoElement.load();
+    } else {
+        img.src = media;
+    }
+
+    document.querySelectorAll(".gallery-thumb").forEach((thumbnail) => {
+        thumbnail.classList.toggle("active", thumbnail.dataset.media === media);
+    });
+}
+
+gallery.forEach((media, index) => {
+    const thumbnail = document.createElement("button");
+    thumbnail.type = "button";
+    thumbnail.className = "gallery-thumb";
+    thumbnail.dataset.media = media;
+    thumbnail.setAttribute("aria-label", `View ${name || "product"} ${index + 1}`);
+    thumbnail.innerHTML = isVideo(media)
+        ? `<video src="${media}" muted playsinline></video><span class="video-badge">Video</span>`
+        : `<img src="${media}" alt="${name || "Product"} view ${index + 1}">`;
+    thumbnail.addEventListener("click", () => showMedia(media));
+    thumbnails.append(thumbnail);
+});
+
+if (gallery.length) showMedia(gallery[0]);
+
+// WhatsApp
+const whatsappBtn = document.getElementById("whatsappBtn");
+whatsappBtn.href = `https://wa.me/${966510882936}?text=${encodeURIComponent("Hello, I would like to order " + name)}`;
+
+let selectedSize = "";
+
+const sizeButtons = document.querySelectorAll(".size-btn");
+
+sizeButtons.forEach(button => {
+
+    if(button.disabled) return;
+
+    button.addEventListener("click", () => {
+
+        sizeButtons.forEach(btn => btn.classList.remove("active"));
+
+        button.classList.add("active");
+
+        selectedSize = button.dataset.size;
+
+    });
+
+});
+
+document.getElementById("whatsappBtn").addEventListener("click", function(e){
+
+    e.preventDefault();
+
+    if(selectedSize === ""){
+        alert("Please select a size.");
+        return;
+    }
+
+    const message =
+`Hello,
+
+I would like to order:
+
+Product: ${name}
+Price: ${price}
+Size: ${selectedSize}`;
+
+    window.open(
+`https://wa.me/${phone || "966510882936"}?text=${encodeURIComponent(message)}`,
+"_blank");
+
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,352 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family: Georgia, serif;
+    background:#f7f0e4;
+    color:#4b352a;
+}
+
+header{
+    background:#5c4033;
+    color:white;
+    text-align:center;
+    padding:30px;
+}
+
+header h1{
+    font-size:50px;
+    letter-spacing:3px;
+}
+
+nav{
+    background:#8b6f47;
+    text-align:center;
+    padding:15px;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    margin:20px;
+    font-size:18px;
+}
+
+nav a:hover{
+    color:#f7e7ce;
+}
+
+.hero{
+    background:url('https://images.unsplash.com/photo-1496747611176-843222e1e57c');
+    background-size:cover;
+    background-position:center;
+    height:500px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.hero-text{
+    background:rgba(0,0,0,0.5);
+    color:white;
+    padding:40px;
+    text-align:center;
+    border-radius:10px;
+}
+
+.hero button{
+    margin-top:20px;
+    padding:12px 30px;
+    background:#c19a6b;
+    color:white;
+    border:none;
+    cursor:pointer;
+}
+
+.products{
+    padding:60px;
+    text-align:center;
+}
+
+.products h2{
+    margin-bottom:40px;
+    font-size:35px;
+}
+
+.product-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:30px;
+}
+
+.card{
+    background:white;
+    border-radius:15px;
+    overflow:hidden;
+    box-shadow:0 5px 15px rgba(0,0,0,0.2);
+    transition:0.4s;
+}
+
+.card:hover{
+    transform:translateY(-10px);
+}
+
+.card img{
+    width:100%;
+    height:300px;
+    object-fit:cover;
+}
+
+.card h3{
+    margin:20px 0 10px;
+}
+
+.card p{
+    padding-bottom:20px;
+    color:#8b6f47;
+    font-size:20px;
+}
+
+footer{
+    background:#5c4033;
+    color:white;
+    text-align:center;
+    padding:20px;
+    margin-top:50px;
+}
+
+.buttons{
+    margin-top:30px;
+}
+
+.btn{
+    display:inline-block;
+    background:#8b6f47;
+    color:white;
+    padding:15px 30px;
+    text-decoration:none;
+    margin:10px;
+    border-radius:5px;
+    font-size:18px;
+}
+
+.btn:hover{
+    background:#5c4033;
+}
+.buttons{
+    margin-top:30px;
+}
+
+.btn{
+    display:inline-block;
+    background:#8b6f47;
+    color:white;
+    padding:15px 30px;
+    text-decoration:none;
+    margin:10px;
+    border-radius:5px;
+    font-size:18px;
+}
+
+.btn:hover{
+    background:#5c4033;
+}
+.card video {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+}
+body{
+    background:#fdf4f6;
+    font-family:Georgia, serif;
+    color:#4b352a;
+}
+.product-page{
+    display:flex;
+    gap:40px;
+    max-width:1000px;
+    margin:20px auto;
+    padding:20px;
+    background:#fff;
+    border-radius:20px;
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
+}
+.left-side{
+    flex:1;
+}
+
+.right-side{
+    flex:1;
+    display:flex;
+    flex-direction:column;
+}
+.right-side h1{
+    margin-bottom:10px;
+}
+
+.right-side h2{
+    margin-bottom:25px;
+    color:#b76e79;
+}
+.right-side h3{
+    margin-top:20px;
+    margin-bottom:10px;
+}
+
+
+.product-page video{
+    width:100%;
+    border-radius:10px;
+    height:400px;
+    object-fit:cover;
+}
+
+#productPrice{
+    font-size:34px;
+    color:#b76e79;
+    margin-bottom:25px;
+}
+#productDesc{
+    margin-bottom:30px;
+    line-height:1.5;
+}
+
+
+#whatsappBtn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 250px;
+    max-width: 320px;
+    height: 55px;
+
+    margin-top: 10px;
+    background: #25D366;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: bold;
+
+    transition: 0.3s;
+}
+
+#whatsappBtn:hover{
+    background: #1EBE5D;
+}
+.card img{
+    width:100%;
+    height:300px;
+    object-fit:cover;
+    border-radius:10px;
+}
+#mediaContainer{
+    width:100%;
+    max-width:400px;
+    margin:auto;
+}
+
+#productImage,
+#productVideo{
+    width:95%;
+    height:450px;
+    border-radius:15px;
+    background:#f8f8f8;
+    object-fit:cover;
+}
+.gallery-thumbnails{
+    display:flex;
+    gap:12px;
+    margin-top:16px;
+    overflow-x:auto;
+    padding:2px;
+}
+.gallery-thumb{
+    position:relative;
+    flex:5 0 82px;
+    height:100px;
+    padding:0;
+    border:2px solid transparent;
+    border-radius:10px;
+    overflow:hidden;
+    background:#f7e9ed;
+    cursor:pointer;
+    transition:transform .2s, border-color .2s;
+}
+.gallery-thumb:hover,
+.gallery-thumb.active{
+    border-color:#b76e79;
+    transform:translateY(-2px);
+}
+.gallery-thumb img,
+.gallery-thumb video{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+}
+.video-badge{
+    position:absolute;
+    right:5px;
+    bottom:5px;
+    padding:3px 5px;
+    border-radius:4px;
+    background:rgba(75,53,42,.8);
+    color:#fff;
+    font:11px Arial, sans-serif;
+}
+#productName{
+    font-size:30px;
+    margin-bottom:10px;
+    font-weight:bold;
+}
+.details{
+    margin-bottom:25px;
+}
+
+.details li{
+    margin-right:12px 0;
+    font-size:18px;
+}
+.sizes{
+    margin-bottom:25px;
+}
+
+
+.size-btn{
+    width:60px;
+    height:60px;
+    border:1px solid #ccc;
+    background:white;
+    border-radius:10px;
+    cursor:pointer;
+    font-size:18px;
+    transition:.3s;
+}
+
+.size-btn:hover{
+    background:#b76e79;
+    color:white;
+}
+
+.size-btn.active{
+    background:#b76e79;
+    color:white;
+    border-color:#b76e79;
+}
+
+.out-of-stock{
+    background:#eee;
+    color:#999;
+    cursor:not-allowed;
+    text-decoration:line-through;
+}
+@media (max-width: 760px){
+    .product-page{flex-direction:column;gap:25px;margin:20px 15px;padding:25px;}
+    #productImage, #productVideo, .product-page video{height:360px;}
+    #whatsappBtn{width:100%;}
+}
